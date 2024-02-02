@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a6c1a129-f5b2-4c4d-9389-fd71518fa652" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/DeletingAndRestoringSongsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/EditSongsPage6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/InputSelectionPage2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/LandingPage1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/MainMenuPage4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/ManageSongsPage5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/SongLanguagesPage7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/SongListPage8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/UseSmartphonesIntroPage3a.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_tests/DeletingPagesObjecty_Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_tests/Deleting_and_RestoringSongs.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2XzKGUqslhZ37MfN1xfk4Oi1a4G" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  }
+}</component>
+  <component name="RunManager" selected="JUnit.HidingAndRestoringSongsTest.hidingAndRestoringSongs">
+    <configuration name="HidingAndRestoringSongsTest.hidingAndRestoringSongs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AllKaraoke.party" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AllKaraoke_tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.HidingAndRestoringSongsTest" />
+      <option name="METHOD_NAME" value="hidingAndRestoringSongs" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dupa.hidingAndRestoringSongs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AllKaraoke.party" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AllKaraoke_tests.dupa2" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AllKaraoke_tests" />
+      <option name="MAIN_CLASS_NAME" value="AllKaraoke_tests.dupa" />
+      <option name="METHOD_NAME" value="hidingAndRestoringSongs" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.HidingAndRestoringSongsTest.hidingAndRestoringSongs" />
+        <item itemvalue="JUnit.dupa.hidingAndRestoringSongs" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a6c1a129-f5b2-4c4d-9389-fd71518fa652" name="Changes" comment="" />
+      <created>1699626372358</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699626372358</updated>
+    </task>
+    <servers />
+  </component>
+</project>
