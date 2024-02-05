@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6c1a129-f5b2-4c4d-9389-fd71518fa652" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/DeletingAndRestoringSongsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/EditSongsPage6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/InputSelectionPage2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/LandingPage1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/MainMenuPage4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/ManageSongsPage5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/SongLanguagesPage7.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/SongListPage8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_Java/UseSmartphonesIntroPage3a.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_tests/DeletingPagesObjecty_Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AllKaraoke_tests/Deleting_and_RestoringSongs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/HelpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Page_Objects/InputSelectionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Page_Objects/InputSelectionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Page_Objects/MainMenuPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Page_Objects/MainMenuPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Page_Objects/TestBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Page_Objects/TestBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,10 +39,30 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+    &quot;git-widget-placeholder&quot;: &quot;help-test&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.HidingAndRestoringSongsTest.hidingAndRestoringSongs">
+  <component name="RunManager" selected="JUnit.HelpTest.hidingAndOpeningHelpContainer">
+    <configuration name="HelpTest.hidingAndOpeningHelpContainer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AllKaraoke.party" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.HelpTest" />
+      <option name="METHOD_NAME" value="hidingAndOpeningHelpContainer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HidingAndRestoringSongsTest.hidingAndRestoringSongs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AllKaraoke.party" />
       <extension name="coverage">
@@ -88,6 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HelpTest.hidingAndOpeningHelpContainer" />
         <item itemvalue="JUnit.HidingAndRestoringSongsTest.hidingAndRestoringSongs" />
         <item itemvalue="JUnit.dupa.hidingAndRestoringSongs" />
       </list>
@@ -103,5 +113,20 @@
       <updated>1699626372358</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

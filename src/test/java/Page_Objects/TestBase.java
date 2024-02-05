@@ -2,6 +2,8 @@ package Page_Objects;
 
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+
 public class TestBase {
 
     private final WebDriver driver;
@@ -17,6 +19,12 @@ public class TestBase {
     public TestBase(WebDriver driver) {
         this.driver = driver;
         initializePageObjects();
+    }
+
+    public void setUp() {
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.get("https://allkaraoke.party");
     }
 
     private void initializePageObjects() {

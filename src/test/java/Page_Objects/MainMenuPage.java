@@ -1,5 +1,6 @@
 package Page_Objects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,6 +36,14 @@ public class MainMenuPage {
 
     public void goToManageSongs() {
         manageSongsButton.click();
+    }
+
+    public WebElement getHelpContainer() {
+        return driver.findElement(By.cssSelector("div[data-test='help-container']"));
+    }
+
+    public WebElement getToggleHelp() {
+        return driver.findElement(By.xpath("//button[@data-test='toggle-help']"));
     }
 
 }
