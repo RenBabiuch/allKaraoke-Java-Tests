@@ -9,22 +9,22 @@ public class InputSelectionPage {
 
     private final WebDriver driver;
 
-    @FindBy(css = "button[data-test='remote-mics']")
+    @FindBy(css = "[data-test='remote-mics']")
     private WebElement useSmartphonesButton;
 
-    @FindBy(css = "button[data-test='built-in']")
+    @FindBy(css = "[data-test='built-in']")
     private WebElement computersMicButton;
 
-    @FindBy(css = "button[data-test='mics']")
+    @FindBy(css = "[data-test='mics']")
     private WebElement singstarMicButton;
 
-    @FindBy(css = "button[data-test='advanced']")
+    @FindBy(css = "[data-test='advanced']")
     private WebElement advancedSetupButton;
 
-    @FindBy(css = "button[data-test='skip']")
+    @FindBy(xpath = "//*[@data-test='skip']")
     private WebElement skipButton;
 
-    @FindBy(css = "svg[data-testid='HelpIcon']")
+    @FindBy(css = "[data-testid='HelpIcon']")
     private WebElement helpButton;
 
 
