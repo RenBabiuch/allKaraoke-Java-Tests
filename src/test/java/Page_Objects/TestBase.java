@@ -23,7 +23,7 @@ public class TestBase {
 
     public void setUp() {
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
         driver.get("https://allkaraoke.party");
     }
 

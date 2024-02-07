@@ -28,7 +28,9 @@ public class HelpTest {
     @Test
     public void hidingAndOpeningHelpContainer() throws InterruptedException {
         testBase.getLandingPage().enterTheGame();
-        Thread.sleep(1000);
+        // ElementClickInterceptedException - this is necessary, because the page doesn't have enough time
+        // to make the 'skip' button visible for clicking. Otherwise, another element would get the click
+        Thread.sleep(500);
 
         // Step 1 - Help container is visible by default on the page if it's not turned off
         testBase.getInputSelectionPage().skipToMainMenu();
