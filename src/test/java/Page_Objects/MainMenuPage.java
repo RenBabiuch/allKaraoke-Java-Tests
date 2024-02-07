@@ -10,19 +10,19 @@ public class MainMenuPage {
 
     private final WebDriver driver;
 
-    @FindBy(css = "button[data-test='sing-a-song']")
+    @FindBy(css = "[data-test='sing-a-song']")
     private WebElement singSongButton;
 
-    @FindBy(css = "button[data-test='select-input']")
+    @FindBy(css = "[data-test='select-input']")
     private WebElement setupMicrophonesButton;
 
-    @FindBy(css = "button[data-test='settings']")
+    @FindBy(css = "[data-test='settings']")
     private WebElement gameSettingsButton;
 
-    @FindBy(css = "button[data-test='jukebox']")
+    @FindBy(css = "[data-test='jukebox']")
     private WebElement jukeboxButton;
 
-    @FindBy(css = "button[data-test='manage-songs']")
+    @FindBy(css = "[data-test='manage-songs']")
     private WebElement manageSongsButton;
 
     public MainMenuPage(WebDriver driver) {
@@ -39,11 +39,30 @@ public class MainMenuPage {
     }
 
     public WebElement getHelpContainer() {
-        return driver.findElement(By.cssSelector("div[data-test='help-container']"));
+        return driver.findElement(By.cssSelector("[data-test='help-container']"));
     }
 
     public WebElement getToggleHelp() {
-        return driver.findElement(By.xpath("//button[@data-test='toggle-help']"));
+        return driver.findElement(By.xpath("//*[@data-test='toggle-help']"));
     }
+
+    public WebElement getFullscreenElement() {
+        return driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
+    }
+
+    public void toggleFullscreen() {
+        getFullscreenElement().click();
+    }
+
+    public boolean isFullscreenOff() {
+        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenIcon']"));
+        return fullscreen.isDisplayed();
+    }
+
+    public boolean isFullscreenOn() {
+        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenExitIcon']"));
+        return fullscreen.isDisplayed();
+    }
+
 
 }
