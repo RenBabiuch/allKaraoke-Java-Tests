@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -23,9 +24,8 @@ public class FullscreenTest {
     }
 
     @Test
-    public void turningFullscreenOnAndOff() throws InterruptedException {
+    public void turningFullscreenOnAndOff() {
         testBase.getLandingPage().enterTheGame();
-        Thread.sleep(500);
 
         // Step 1 - Fullscreen is disabled by default
         testBase.getInputSelectionPage().skipToMainMenu();
@@ -37,9 +37,10 @@ public class FullscreenTest {
         Assertions.assertTrue(testBase.getSongListPage().isFullscreenOn());
 
         // Step 3 - Turning off fullscreen makes that mode is not getting on automatically
-        actions.sendKeys("Backspace");
+        actions.sendKeys(Keys.BACK_SPACE).perform();
         testBase.getMainMenuPage().toggleFullscreen();
         Assertions.assertTrue(testBase.getMainMenuPage().isFullscreenOff());
+        testBase.getMainMenuPage().goToSongList();
         Assertions.assertTrue(testBase.getSongListPage().isFullscreenOff());
     }
 

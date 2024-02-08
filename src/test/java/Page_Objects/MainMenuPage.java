@@ -58,11 +58,4 @@ public class MainMenuPage {
         WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenIcon']"));
         return fullscreen.isDisplayed();
     }
-
-    public boolean isFullscreenOn() {
-        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenExitIcon']"));
-        return fullscreen.isDisplayed();
-    }
-
-
 }
