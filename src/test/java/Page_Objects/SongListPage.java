@@ -17,15 +17,24 @@ public class SongListPage {
     }
 
     public List<WebElement> getSongElement(String songID) {
-        return driver.findElements(By.cssSelector("div[data-test='song-" + songID + "']"));
+        return driver.findElements(By.cssSelector("[data-test='song-" + songID + "']"));
     }
 
     public boolean isSongOnTheList(String songID) {
         return !getSongElement(songID).isEmpty();
     }
 
-    public WebElement getFullscreenIcon() {
-        return driver.findElement(By.cssSelector("svg[data-testid='FullscreenExitIcon']"));
+    public WebElement getFullscreenElement() {
+        return driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
     }
 
+    public boolean isFullscreenOff() {
+        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenIcon']"));
+        return fullscreen.isDisplayed();
+    }
+
+    public boolean isFullscreenOn() {
+        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenExitIcon']"));
+        return fullscreen.isDisplayed();
+    }
 }

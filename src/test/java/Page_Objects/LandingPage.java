@@ -28,6 +28,13 @@ public class LandingPage {
 
     public void enterTheGame() {
         enterTheGameButton.click();
+        //ElementClickInterceptedException - this is necessary, because the page doesn't have enough time
+        //to make buttons on next page visible for clicking. Otherwise, another element would get the click
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void goToGitHubRepository() {
