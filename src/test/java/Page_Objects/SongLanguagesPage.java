@@ -33,7 +33,7 @@ public class SongLanguagesPage {
     }
 
     public void ensureSongLanguageIsSelected(String language) {
-        if(getSongLanguageCheckbox(language).getAttribute("data-testid").equals("CheckBoxOutlineBlankIcon")) {
+        if (getSongLanguageCheckbox(language).getAttribute("data-testid").equals("CheckBoxOutlineBlankIcon")) {
             getSongLanguageCheckbox(language).click();
         }
     }

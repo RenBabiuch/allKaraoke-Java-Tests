@@ -53,4 +53,38 @@ public class SongListPage {
     public void goBackToMainMenu() {
         actions.sendKeys(Keys.BACK_SPACE).perform();
     }
+
+    public WebElement getGroupNameButton(String groupName) {
+        return driver.findElement(By.cssSelector("[data-test='group-navigation-" + groupName + "']"));
+    }
+
+    public void goToGroupName(String groupName) {
+        getGroupNameButton(groupName).click();
+
+        // AssertionFailedError - Thread.sleep allows enough time to scroll to the expected group name
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean isGroupSelected(String groupName) {
+        List<WebElement> activeGroups = driver.findElements(By.cssSelector("[data-active='true']"));
+
+        for (WebElement activeGroup : activeGroups) {
+            String activeGroupValue = activeGroup.getAttribute("data-test");
+
+            if (activeGroupValue.equals("group-navigation-" + groupName)) {
+                System.out.println(activeGroupValue);
+                return true;
+            }
+            System.out.println(activeGroupValue);
+        }
+        return false;
+    }
+
+    public boolean isSongFromTheGroupSelected(String groupName) {
+        return driver.findElement(By.cssSelector("[data-group-letter='" + groupName + "'] [data-focused='true']")).isDisplayed();
+    }
 }
