@@ -1,6 +1,7 @@
 package Page_Objects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,10 +31,12 @@ public class MainMenuPage {
     @FindBy(css = "[data-test='manage-songs']")
     private WebElement manageSongsButton;
 
+    @FindBy(css = "[data-test='toggle-fullscreen']")
+    private WebElement fullscreenElement;
+
     public MainMenuPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void goToSongList() {
@@ -56,19 +59,24 @@ public class MainMenuPage {
         return driver.findElement(By.xpath("//*[@data-test='toggle-help']"));
     }
 
-    public WebElement getFullscreenElement() {
-        return driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
-    }
-
     public void toggleFullscreen() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-test='toggle-fullscreen']")));
-        getFullscreenElement().click();
-    }
+        // StaleElementReferenceException - wait is using to give more time for finding that element, because sometimes
+        // selenium can not locate it for click
 
+        try {
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOf(fullscreenElement));
+            fullscreenElement.click();
+
+        } catch (StaleElementReferenceException e) {
+            // The fullscreenElement became `too old`, so I need to localize it again
+            WebElement refreshFullscreen = driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
+            refreshFullscreen.click();
+        }
+    }
 
     public boolean isFullscreenOff() {
-        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenIcon']"));
-        return fullscreen.isDisplayed();
+        return fullscreenElement.findElement(By.cssSelector("[data-testid='FullscreenIcon']")).isDisplayed();
     }
 
 }
