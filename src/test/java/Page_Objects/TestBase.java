@@ -5,7 +5,6 @@ import org.openqa.selenium.devtools.v121.network.Network;
 
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +19,8 @@ public class TestBase {
     private SongListPage songListPage;
     private SmartphonesConnectionPage smartphonesConnectionPage;
     private SongLanguagesPage songLanguagesPage;
-
     private JukeboxPage jukeboxPage;
+    private AdvancedConnectionPage advancedConnectionPage;
 
     public TestBase(ChromeDriver driver) {
         this.driver = driver;
@@ -32,7 +31,7 @@ public class TestBase {
         driver.getDevTools().createSession();
         driver.getDevTools().send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
         driver.getDevTools().send(Network.setBlockedURLs(List.of(
-                "https://backend.allkaraoke.party/posthog/*")));
+                "https://backend.allkaraoke.party/posthog/*", "*posthog.com*")));
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
@@ -49,6 +48,7 @@ public class TestBase {
         songLanguagesPage = new SongLanguagesPage(driver);
         smartphonesConnectionPage = new SmartphonesConnectionPage(driver);
         jukeboxPage = new JukeboxPage(driver);
+        advancedConnectionPage = new AdvancedConnectionPage(driver);
     }
 
     public LandingPage getLandingPage() {
@@ -85,6 +85,10 @@ public class TestBase {
 
     public JukeboxPage getJukeboxPage() {
         return jukeboxPage;
+    }
+
+    public AdvancedConnectionPage getAdvancedConnectionPage() {
+        return advancedConnectionPage;
     }
 
 }
