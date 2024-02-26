@@ -20,7 +20,6 @@ public class TestBase {
     private SmartphonesConnectionPage smartphonesConnectionPage;
     private SongLanguagesPage songLanguagesPage;
     private JukeboxPage jukeboxPage;
-    private AdvancedConnectionPage advancedConnectionPage;
 
     public TestBase(ChromeDriver driver) {
         this.driver = driver;
@@ -48,7 +47,6 @@ public class TestBase {
         songLanguagesPage = new SongLanguagesPage(driver);
         smartphonesConnectionPage = new SmartphonesConnectionPage(driver);
         jukeboxPage = new JukeboxPage(driver);
-        advancedConnectionPage = new AdvancedConnectionPage(driver);
     }
 
     public LandingPage getLandingPage() {
@@ -86,9 +84,4 @@ public class TestBase {
     public JukeboxPage getJukeboxPage() {
         return jukeboxPage;
     }
-
-    public AdvancedConnectionPage getAdvancedConnectionPage() {
-        return advancedConnectionPage;
-    }
-
 }
