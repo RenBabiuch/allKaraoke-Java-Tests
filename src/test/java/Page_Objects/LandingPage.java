@@ -29,13 +29,12 @@ public class LandingPage {
     public LandingPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void enterTheGame() {
         // StaleElementReferenceException - wait is using to give more time for finding that element, because sometimes
         // selenium can not locate it for click
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        // The fullscreenElement became `too old`, so I need to localize it again
         WebElement enterClickable = wait.until(ExpectedConditions.elementToBeClickable(enterTheGameButton));
         enterClickable.click();
 

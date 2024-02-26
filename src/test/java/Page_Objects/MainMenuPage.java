@@ -37,6 +37,7 @@ public class MainMenuPage {
     public MainMenuPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void goToSongList() {
@@ -64,7 +65,6 @@ public class MainMenuPage {
         // selenium can not locate it for click
 
         try {
-            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOf(fullscreenElement));
             fullscreenElement.click();
 
@@ -78,5 +78,4 @@ public class MainMenuPage {
     public boolean isFullscreenOff() {
         return fullscreenElement.findElement(By.cssSelector("[data-testid='FullscreenIcon']")).isDisplayed();
     }
-
 }

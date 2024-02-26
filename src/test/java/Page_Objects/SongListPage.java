@@ -27,6 +27,7 @@ public class SongListPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         actions = new Actions(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public List<WebElement> getSongElement(String songID) {
@@ -49,7 +50,6 @@ public class SongListPage {
         // StaleElementReferenceException - wait is using here to give more time for finding element, to be able to
         // do assertion on it
         try{
-            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             return fullscreenElement.findElement(By.cssSelector("[data-testid='FullscreenIcon']")).isDisplayed();
 
         } catch (StaleElementReferenceException e) {
