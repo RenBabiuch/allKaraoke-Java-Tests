@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class HidingAndRestoringSongsTest {
 
-    private WebDriver driver;
+    private ChromeDriver driver;
     private TestBase testBase;
 
     String songName = "Bohemian Rhapsody";

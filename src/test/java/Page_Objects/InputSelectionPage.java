@@ -21,7 +21,7 @@ public class InputSelectionPage {
     @FindBy(css = "[data-test='advanced']")
     private WebElement advancedSetupButton;
 
-    @FindBy(xpath = "//*[@data-test='skip']")
+    @FindBy(css = "[data-test='skip']")
     private WebElement skipButton;
 
     @FindBy(css = "[data-testid='HelpIcon']")
