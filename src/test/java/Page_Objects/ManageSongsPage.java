@@ -10,16 +10,16 @@ public class ManageSongsPage {
     private final WebDriver driver;
 
 
-    @FindBy(css = "button[data-test='exclude-languages']")
+    @FindBy(css = "[data-test='exclude-languages']")
     private WebElement selectSongLanguagesButton;
 
-    @FindBy(css = "button[data-test='edit-songs']")
+    @FindBy(css = "[data-test='edit-songs']")
     private WebElement editSongsButton;
 
-    @FindBy(css = "button[data-test='convert-song']")
+    @FindBy(css = "[data-test='convert-song']")
     private WebElement convertUltrastarButton;
 
-    @FindBy(css = "button[data-test='back-button']")
+    @FindBy(css = "[data-test='back-button']")
     private WebElement returnToMainMenuButton;
 
 
