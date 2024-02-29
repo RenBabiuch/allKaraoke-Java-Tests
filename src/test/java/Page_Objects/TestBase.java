@@ -20,6 +20,7 @@ public class TestBase {
     private SmartphonesConnectionPage smartphonesConnectionPage;
     private SongLanguagesPage songLanguagesPage;
     private JukeboxPage jukeboxPage;
+    private FullscreenPage fullscreenPage;
 
     public TestBase(ChromeDriver driver) {
         this.driver = driver;
@@ -47,6 +48,7 @@ public class TestBase {
         songLanguagesPage = new SongLanguagesPage(driver);
         smartphonesConnectionPage = new SmartphonesConnectionPage(driver);
         jukeboxPage = new JukeboxPage(driver);
+        fullscreenPage = new FullscreenPage(driver);
     }
 
     public LandingPage getLandingPage() {
@@ -83,5 +85,9 @@ public class TestBase {
 
     public JukeboxPage getJukeboxPage() {
         return jukeboxPage;
+    }
+
+    public FullscreenPage getFullscreenPage() {
+        return fullscreenPage;
     }
 }
