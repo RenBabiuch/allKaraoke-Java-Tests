@@ -44,14 +44,16 @@ public class FullscreenPage {
         // StaleElementReferenceException - wait is using here to give more time for finding element, to be able to
         // do assertion on it
 
+        By fullscreenOffIcon = By.cssSelector("[data-testid='FullscreenIcon']");
+
         try{
-            return fullscreenElement.findElement(By.cssSelector("[data-testid='FullscreenIcon']")).isDisplayed();
+            return fullscreenElement.findElement(fullscreenOffIcon).isDisplayed();
 
         } catch (StaleElementReferenceException e) {
             // The fullscreenElement became `too old`, so I need to localize it again
-            WebElement refreshFullscreen = driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
-            wait.until(ExpectedConditions.elementToBeClickable(refreshFullscreen));
-            return refreshFullscreen.findElement(By.cssSelector("[data-testid='FullscreenIcon']")).isDisplayed();
+            WebElement refreshFullscreenElem = driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
+            wait.until(ExpectedConditions.elementToBeClickable(refreshFullscreenElem));
+            return refreshFullscreenElem.findElement(fullscreenOffIcon).isDisplayed();
         }
     }
 

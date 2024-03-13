@@ -62,7 +62,6 @@ public class SongListPage {
             String activeGroupValue = activeGroup.getAttribute("data-test");
 
             if (activeGroupValue.equals("group-navigation-" + groupName)) {
-                System.out.println(activeGroupValue);
                 return true;
             }
             System.out.println(activeGroupValue);
