@@ -1,10 +1,12 @@
 package Page_Objects;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -14,26 +16,51 @@ public class SongListPage {
     private final WebDriver driver;
     private Actions actions;
 
+    @FindBy(css = "[data-testid='SearchIcon']")
+    private WebElement searchButton;
+
+    @FindBy(css = "[data-test='filters-search']")
+    private WebElement searchInput;
+
     public SongListPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         actions = new Actions(driver);
     }
 
-    public List<WebElement> getSongElement(String songID) {
-        return driver.findElements(By.cssSelector("[data-test='song-" + songID + "']"));
+    public WebElement getSongElement(String songID) {
+        return driver.findElement(By.cssSelector("[data-test='song-" + songID + "']"));
     }
 
     public boolean isSongOnTheList(String songID) {
-        return !getSongElement(songID).isEmpty();
+        List<WebElement> songList = driver.findElements(By.cssSelector("[data-test='song-" + songID + "']"));
+        return !songList.isEmpty();
     }
 
     public WebElement getSongPreviewElement() {
         return driver.findElement(By.cssSelector("[data-test='song-preview']"));
     }
 
+    public void focusSong(String songID) {
+        getSongElement(songID).click();
+    }
+
+    public void openPreviewForSong(String songID) {
+        actions.doubleClick(getSongElement(songID)).perform();
+    }
+
     public String getSelectedSongID() {
         return getSongPreviewElement().getAttribute("data-song");
+    }
+
+    public void expectSearchInputToBeVisible() {
+        Assertions.assertTrue(searchInput.isDisplayed(), "Search input is not visible");
+    }
+
+    public void searchSong(String name) {
+        searchButton.click();
+        expectSearchInputToBeVisible();
+        searchInput.sendKeys(name);
     }
 
     public void goBackToMainMenu() {
