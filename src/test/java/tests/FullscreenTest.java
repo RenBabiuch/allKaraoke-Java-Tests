@@ -5,7 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FullscreenTest {
@@ -25,20 +24,20 @@ public class FullscreenTest {
 
         // Step 1: Fullscreen is disabled by default
         testBase.getInputSelectionPage().skipToMainMenu();
-        Assertions.assertTrue(testBase.getMainMenuPage().isFullscreenOff());
+        Assertions.assertTrue(testBase.getFullscreenPage().isFullscreenOff(), "Fullscreen should be turned off");
 
         // Step 2: Fullscreen is enabled by default on the song list page
         testBase.getMainMenuPage().goToSongList();
         testBase.getSongLanguagesPage().continueAndGoToSongList();
-        Assertions.assertTrue(testBase.getSongListPage().isFullscreenOn());
+        Assertions.assertTrue(testBase.getFullscreenPage().isFullscreenOn(), "Fullscreen should be turned on");
 
         // Step 3: Turning off fullscreen makes that mode is not getting on automatically
         testBase.getSongListPage().goBackToMainMenu();
-        testBase.getMainMenuPage().toggleFullscreen();
-        Assertions.assertTrue(testBase.getMainMenuPage().isFullscreenOff());
+        testBase.getFullscreenPage().toggleFullscreen();
+        Assertions.assertTrue(testBase.getFullscreenPage().isFullscreenOff(), "Fullscreen should be turned off");
 
         testBase.getMainMenuPage().goToSongList();
-        Assertions.assertTrue(testBase.getSongListPage().isFullscreenOff());
+        Assertions.assertTrue(testBase.getFullscreenPage().isFullscreenOff(), "Fullscreen should be turned off");
     }
 
     @AfterEach

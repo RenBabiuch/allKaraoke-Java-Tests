@@ -36,20 +36,6 @@ public class SongListPage {
         return getSongPreviewElement().getAttribute("data-song");
     }
 
-    public WebElement getFullscreenElement() {
-        return driver.findElement(By.cssSelector("[data-test='toggle-fullscreen']"));
-    }
-
-    public boolean isFullscreenOff() {
-        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenIcon']"));
-        return fullscreen.isDisplayed();
-    }
-
-    public boolean isFullscreenOn() {
-        WebElement fullscreen = getFullscreenElement().findElement(By.cssSelector("[data-testid='FullscreenExitIcon']"));
-        return fullscreen.isDisplayed();
-    }
-
     public void goBackToMainMenu() {
         actions.sendKeys(Keys.BACK_SPACE).perform();
     }
@@ -76,7 +62,6 @@ public class SongListPage {
             String activeGroupValue = activeGroup.getAttribute("data-test");
 
             if (activeGroupValue.equals("group-navigation-" + groupName)) {
-                System.out.println(activeGroupValue);
                 return true;
             }
             System.out.println(activeGroupValue);
