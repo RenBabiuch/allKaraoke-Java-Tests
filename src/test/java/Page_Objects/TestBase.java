@@ -21,6 +21,9 @@ public class TestBase {
     private SongLanguagesPage songLanguagesPage;
     private JukeboxPage jukeboxPage;
     private FullscreenPage fullscreenPage;
+    private AdvancedConnectionPage advancedConnectionPage;
+    private SongPreviewPage songPreviewPage;
+    private GamePage gamePage;
 
     public TestBase(ChromeDriver driver) {
         this.driver = driver;
@@ -49,6 +52,9 @@ public class TestBase {
         smartphonesConnectionPage = new SmartphonesConnectionPage(driver);
         jukeboxPage = new JukeboxPage(driver);
         fullscreenPage = new FullscreenPage(driver);
+        advancedConnectionPage = new AdvancedConnectionPage(driver);
+        songPreviewPage = new SongPreviewPage(driver);
+        gamePage = new GamePage(driver);
     }
 
     public LandingPage getLandingPage() {
@@ -89,5 +95,17 @@ public class TestBase {
 
     public FullscreenPage getFullscreenPage() {
         return fullscreenPage;
+    }
+
+    public AdvancedConnectionPage getAdvancedConnectionPage() {
+        return advancedConnectionPage;
+    }
+
+    public SongPreviewPage getSongPreviewPage() {
+        return songPreviewPage;
+    }
+
+    public GamePage getGamePage() {
+        return gamePage;
     }
 }
