@@ -33,7 +33,7 @@ public class SongLanguagesPage {
     }
 
     public void ensureSongLanguageIsSelected(String language) {
-        if (isLanguageSelected(language)) {
+        if (!isLanguageSelected(language)) {
             getSongLanguageCheckbox(language).click();
         }
     }
@@ -44,7 +44,7 @@ public class SongLanguagesPage {
     }
 
     public boolean isLanguageSelected(WebElement language) {
-        return language.getAttribute("data-testid").equals("CheckBoxOutlineBlankIcon");
+        return language.getAttribute("data-testid").equals("CheckBoxIcon");
     }
 
     public void ensureAllSongLanguagesAreSelected() {
@@ -52,7 +52,7 @@ public class SongLanguagesPage {
         List<WebElement> languages = driver.findElements(By.cssSelector("[data-test^='lang-'] svg"));
 
         for (WebElement language : languages) {
-            if (isLanguageSelected(language)) {
+            if (!isLanguageSelected(language)) {
                 language.click();
             }
         }
