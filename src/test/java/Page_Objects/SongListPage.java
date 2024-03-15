@@ -22,6 +22,7 @@ public class SongListPage {
     @FindBy(css = "[data-test='filters-search']")
     private WebElement searchInput;
 
+
     public SongListPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -98,5 +99,27 @@ public class SongListPage {
 
     public boolean isSongFromTheGroupSelected(String groupName) {
         return driver.findElement(By.cssSelector("[data-group-letter='" + groupName + "'] [data-focused='true']")).isDisplayed();
+    }
+
+    public WebElement playlistElement(String playlistName) {
+        return driver.findElement(By.cssSelector("[data-test='playlist-" + playlistName + "']"));
+    }
+
+    public void goToPlaylist(String playlistName) {
+        playlistElement(playlistName).click();
+    }
+
+    public void expectPlaylistToBeSelected(String playlistName) {
+        String playlistSelectedAttribute = playlistElement(playlistName).getAttribute("data-selected");
+
+        Assertions.assertEquals(playlistSelectedAttribute, "true");
+    }
+
+    public void approveSongByKeyboard() {
+        actions.sendKeys(Keys.ENTER).perform();
+    }
+
+    public boolean isSongMarkedWithDuetIcon(String songID) {
+        return getSongElement(songID).findElement(By.cssSelector("[data-test='multitrack-indicator']")).isDisplayed();
     }
 }
