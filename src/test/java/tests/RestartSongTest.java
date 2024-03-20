@@ -30,7 +30,7 @@ public class RestartSongTest {
 
         // Step 1: Select Advanced setup
         testBase.getInputSelectionPage().selectAdvancedSetup();
-        testBase.getAdvancedConnectionPage().saveAndGoToSing();
+        testBase.getAdvancedConnectionPage().goToMainMenu();
 
         // step 2: Ensure song language is selected
         testBase.getMainMenuPage().goToSongList();

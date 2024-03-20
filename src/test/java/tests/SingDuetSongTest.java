@@ -42,7 +42,7 @@ public class SingDuetSongTest {
 
         // Step 1: Select Advanced setup
         testBase.getInputSelectionPage().selectAdvancedSetup();
-        testBase.getAdvancedConnectionPage().saveAndGoToSing();
+        testBase.getAdvancedConnectionPage().goToMainMenu();
 
         // Step 2: Ensure song language is selected
         testBase.getMainMenuPage().goToSongList();

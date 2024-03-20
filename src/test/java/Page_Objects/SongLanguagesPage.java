@@ -15,6 +15,9 @@ public class SongLanguagesPage {
     @FindBy(css = "[data-test='close-exclude-languages']")
     private WebElement continueButton;
 
+    @FindBy(css = "[data-test='all-languages-excluded-warning']")
+    private WebElement allLanguagesExcludedAlert;
+
     public SongLanguagesPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -56,5 +59,15 @@ public class SongLanguagesPage {
                 language.click();
             }
         }
+    }
+
+    public void unselectLanguage(String language) {
+        if(isLanguageSelected(language)) {
+            getSongLanguageCheckbox(language).click();
+        }
+    }
+
+    public boolean isAllLanguagesExcludedAlertVisible() {
+        return allLanguagesExcludedAlert.isDisplayed();
     }
 }

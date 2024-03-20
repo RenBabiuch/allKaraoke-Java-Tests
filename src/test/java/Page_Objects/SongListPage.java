@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.time.Duration;
 import java.util.List;
 
 public class SongListPage {
@@ -65,6 +66,7 @@ public class SongListPage {
     }
 
     public void goBackToMainMenu() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
         actions.sendKeys(Keys.BACK_SPACE).perform();
     }
 
