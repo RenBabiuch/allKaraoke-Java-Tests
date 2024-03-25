@@ -50,10 +50,8 @@ public class SingDuetSongTest {
         testBase.getSongLanguagesPage().continueAndGoToSongList();
 
         // Step 3: Go to playlist and open preview the song
-        testBase.getFullscreenPage().isFullscreenOn();
         testBase.getSongListPage().goToPlaylist(playlistName);
         testBase.getSongListPage().expectPlaylistToBeSelected(playlistName);
-        testBase.getSongListPage().goToGroupName(groupName);
         Assertions.assertTrue(testBase.getSongListPage().isSongMarkedWithDuetIcon(songID));
         testBase.getSongListPage().openPreviewForSong(songID);
 
