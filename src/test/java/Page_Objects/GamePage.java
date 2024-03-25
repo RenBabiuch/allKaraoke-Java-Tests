@@ -1,10 +1,7 @@
 package Page_Objects;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -33,7 +30,12 @@ public class GamePage {
     }
 
     public WebElement playerScoreElement(int playerNumber) {
-        return driver.findElement(By.cssSelector("[data-test='player-" + playerNumber + "-score']"));
+        By playerNumSelector = By.cssSelector("[data-test='player-" + playerNumber + "-score']");
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(playerNumSelector));
+
+        return driver.findElement(playerNumSelector);
     }
 
     public WebElement playersCoopScoreElement() {
@@ -83,4 +85,22 @@ public class GamePage {
         restartButton.click();
     }
 
+    public WebElement lyricsContainerElement(int playerNumber) {
+        By lyricsContainerSelector = By.cssSelector("[data-test='lyrics-container-player-" + playerNumber + "']");
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(lyricsContainerSelector));
+        return driver.findElement(lyricsContainerSelector);
+    }
+
+    public boolean isPlayerLyricsVisible(int playerNumber) {
+        return lyricsContainerElement(playerNumber).isDisplayed();
+    }
+
+    public void skipOutro() {
+        By skipOutroSelector = By.cssSelector("[data-test='skip-outro-info']");
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(300));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(skipOutroSelector));
+        actions.sendKeys(Keys.ENTER).perform();
+    }
 }

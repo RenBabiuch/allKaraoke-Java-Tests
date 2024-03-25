@@ -24,6 +24,8 @@ public class TestBase {
     private AdvancedConnectionPage advancedConnectionPage;
     private SongPreviewPage songPreviewPage;
     private GamePage gamePage;
+    private PostGameResultsPage postGameResultsPage;
+    private PostGameHighScoresPage postGameHighScoresPage;
 
     public TestBase(ChromeDriver driver) {
         this.driver = driver;
@@ -55,6 +57,8 @@ public class TestBase {
         advancedConnectionPage = new AdvancedConnectionPage(driver);
         songPreviewPage = new SongPreviewPage(driver);
         gamePage = new GamePage(driver);
+        postGameResultsPage = new PostGameResultsPage(driver);
+        postGameHighScoresPage = new PostGameHighScoresPage(driver);
     }
 
     public LandingPage getLandingPage() {
@@ -107,5 +111,13 @@ public class TestBase {
 
     public GamePage getGamePage() {
         return gamePage;
+    }
+
+    public PostGameResultsPage getPostGameResultsPage() {
+        return postGameResultsPage;
+    }
+
+    public PostGameHighScoresPage getPostGameHighScoresPage() {
+        return postGameHighScoresPage;
     }
 }
