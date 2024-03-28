@@ -14,6 +14,7 @@ public class ExcludeLanguagesTest {
 
     String portugueseLang = "Portuguese";
     String englishLang = "English";
+    String allSongsPlaylist = "All";
     String portSong = "os-quatro-e-meia-ola-solidao";
     String engSong = "bob-marley-the-wailers-three-little-birds";
     String portEngSong = "nelly-furtado-forca";
@@ -38,9 +39,10 @@ public class ExcludeLanguagesTest {
         testBase.getSongLanguagesPage().unselectLanguage(portugueseLang);
         testBase.getSongLanguagesPage().ensureSongLanguageIsSelected(englishLang);
         testBase.getSongLanguagesPage().continueAndGoToSongList();
-        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(portSong));
+        testBase.getSongListPage().goToPlaylist(allSongsPlaylist);
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(engSong));
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(portEngSong));
+        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(portSong));
 
         // Step 3: Go back to Song Languages - exclude English language
         testBase.getSongListPage().goBackToMainMenu();
@@ -51,9 +53,10 @@ public class ExcludeLanguagesTest {
         testBase.getSongLanguagesPage().ensureSongLanguageIsSelected(portugueseLang);
         testBase.getSongLanguagesPage().continueAndGoToSongList();
         testBase.getMainMenuPage().goToSongList();
-        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(engSong));
+        testBase.getSongListPage().goToPlaylist(allSongsPlaylist);
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(portSong));
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(portEngSong));
+        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(engSong));
 
         // Step 4: Go back to Song Languages - include both languages
         testBase.getSongListPage().goBackToMainMenu();
@@ -64,6 +67,7 @@ public class ExcludeLanguagesTest {
         testBase.getSongLanguagesPage().ensureSongLanguageIsSelected(portugueseLang);
         testBase.getSongLanguagesPage().continueAndGoToSongList();
         testBase.getMainMenuPage().goToSongList();
+        testBase.getSongListPage().goToPlaylist(allSongsPlaylist);
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(engSong));
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(portSong));
         Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(portEngSong));
@@ -72,9 +76,7 @@ public class ExcludeLanguagesTest {
         testBase.getSongListPage().goBackToMainMenu();
         testBase.getMainMenuPage().goToManageSongs();
         testBase.getManageSongsPage().goToSelectLanguages();
-
-        testBase.getSongLanguagesPage().unselectLanguage(englishLang);
-        testBase.getSongLanguagesPage().unselectLanguage(portugueseLang);
+        testBase.getSongLanguagesPage().ensureAllSongLanguagesAreDeselected();
         Assertions.assertTrue(testBase.getSongLanguagesPage().isAllLanguagesExcludedAlertVisible());
     }
 

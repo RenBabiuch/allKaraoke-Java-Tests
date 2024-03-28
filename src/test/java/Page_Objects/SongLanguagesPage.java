@@ -61,6 +61,17 @@ public class SongLanguagesPage {
         }
     }
 
+    public void ensureAllSongLanguagesAreDeselected() {
+        List<WebElement> languages = driver.findElements(By.cssSelector("[data-test^='lang-'] svg"));
+
+        for(WebElement language: languages) {
+            if(isLanguageSelected(language)) {
+                language.click();
+            }
+        }
+    }
+
+
     public void unselectLanguage(String language) {
         if(isLanguageSelected(language)) {
             getSongLanguageCheckbox(language).click();
