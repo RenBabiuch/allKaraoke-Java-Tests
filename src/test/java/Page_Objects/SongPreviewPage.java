@@ -25,6 +25,9 @@ public class SongPreviewPage {
     @FindBy(css = "[data-test='game-mode-setting']")
     private WebElement gameModeElement;
 
+    @FindBy(css = "[data-test='select-inputs-button']")
+    private WebElement setupMicsButton;
+
     public SongPreviewPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -84,5 +87,9 @@ public class SongPreviewPage {
             }
         }
     return true;
+    }
+
+    public void goToInputSelection() {
+        setupMicsButton.click();
     }
 }

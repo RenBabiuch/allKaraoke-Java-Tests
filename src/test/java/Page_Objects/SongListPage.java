@@ -23,6 +23,8 @@ public class SongListPage {
     @FindBy(css = "[data-test='filters-search']")
     private WebElement searchInput;
 
+    @FindBy(css = "[data-test='song-list-container']")
+    private WebElement songListContainer;
 
     public SongListPage(WebDriver driver) {
         this.driver = driver;
@@ -114,7 +116,7 @@ public class SongListPage {
     public void expectPlaylistToBeSelected(String playlistName) {
         String playlistSelectedAttribute = playlistElement(playlistName).getAttribute("data-selected");
 
-        Assertions.assertEquals(playlistSelectedAttribute, "true");
+        Assertions.assertEquals("true", playlistSelectedAttribute, "Expected playlist is not selected");
     }
 
     public void approveSongByKeyboard() {
@@ -124,4 +126,30 @@ public class SongListPage {
     public boolean isSongMarkedWithDuetIcon(String songID) {
         return getSongElement(songID).findElement(By.cssSelector("[data-test='multitrack-indicator']")).isDisplayed();
     }
+
+    public void expectSongToBeMarkedAsPlayedToday(String songID) {
+        String playedStatusText = getSongElement(songID).findElement(By.cssSelector("[data-test='song-stat-indicator']")).getText();
+        String playedStatusSubs = playedStatusText.substring(0, 1).toUpperCase() + playedStatusText.substring(1).toLowerCase();
+
+        Assertions.assertEquals("Played today", playedStatusSubs, "Played today status should be visible for the song");
+    }
+
+    public boolean isSongMarkedAsNew(String songID) {
+        return getSongElement(songID).findElement(By.cssSelector("[data-testid='FiberNewOutlinedIcon']")).isDisplayed();
+    }
+
+    public boolean doesPlaylistContainSongsMarkedAsNew() {
+        List<WebElement> newSongs = songListContainer.findElements(By.cssSelector("[data-testid='FiberNewOutlinedIcon']"));
+        return newSongs.getFirst().isDisplayed();
+    }
+
+    public boolean isSongMarkedAsPopular(String songID) {
+        return getSongElement(songID).findElement(By.cssSelector("[data-testid='StarIcon'")).isDisplayed();
+    }
+
+    public boolean doesPlaylistContainSongsMarkedAsPopular() {
+        List<WebElement> starSongs = songListContainer.findElements(By.cssSelector("[data-testid='StarIcon']"));
+        return starSongs.getLast().isDisplayed();
+    }
+
 }

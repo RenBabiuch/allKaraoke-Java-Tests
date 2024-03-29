@@ -96,6 +96,13 @@ public class GamePage {
         return lyricsContainerElement(playerNumber).isDisplayed();
     }
 
+    public void skipIntro() {
+        By skipIntroSelector = By.cssSelector("[data-test='skip-intro-info']");
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(skipIntroSelector));
+        actions.sendKeys(Keys.ENTER).perform();
+    }
+
     public void skipOutro() {
         By skipOutroSelector = By.cssSelector("[data-test='skip-outro-info']");
 

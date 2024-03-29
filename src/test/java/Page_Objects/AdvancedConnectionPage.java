@@ -28,4 +28,8 @@ public class AdvancedConnectionPage {
         singSongButton().click();
     }
 
+    public void goBackToSongPreview() {
+        singSongButton().click();
+    }
+
 }
