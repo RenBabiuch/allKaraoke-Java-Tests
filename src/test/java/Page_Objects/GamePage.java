@@ -12,21 +12,28 @@ import static org.awaitility.Awaitility.await;
 
 
 import java.time.Duration;
+import java.util.Timer;
 
 public class GamePage {
 
     private WebDriver driver;
     private WebDriverWait wait;
     private Actions actions;
+    private Timer timer;
 
     @FindBy(css = "[data-test='button-restart-song']")
     private WebElement restartButton;
+
+    @FindBy(css = "[data-test='button-exit-song']")
+    private WebElement exitButton;
+
 
     public GamePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
+        timer = new Timer();
     }
 
     public WebElement playerScoreElement(int playerNumber) {
@@ -75,7 +82,6 @@ public class GamePage {
         Assertions.assertEquals(expectedScoreValue, p1scoreNum);
     }
 
-
     public void goToPauseMenu() {
         actions.sendKeys(Keys.BACK_SPACE).perform();
     }
@@ -83,6 +89,11 @@ public class GamePage {
     public void restartSong() {
         goToPauseMenu();
         restartButton.click();
+    }
+
+    public void exitSong() {
+        goToPauseMenu();
+        exitButton.click();
     }
 
     public WebElement lyricsContainerElement(int playerNumber) {
