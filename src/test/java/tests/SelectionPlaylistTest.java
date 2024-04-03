@@ -6,18 +6,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class SelectionPlaylistTest {
 
     private ChromeDriver driver;
     private TestBase testBase;
-    private WebDriverWait wait;
-
     String compSongID = "xavier-rudd-stoney-creek";
-    String almCompSongID = "electric-light-orchestra-bluebird";
+    String almSongID = "electric-light-orchestra-bluebird";
+    String uncompSongID = "don-mclean-american-pie";
     String engLanguage = "English";
     String englishPlaylist = "English";
     String selectionPlaylist = "Selection";
@@ -26,7 +22,6 @@ public class SelectionPlaylistTest {
     public void setUp() {
         driver = new ChromeDriver();
         testBase = new TestBase(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         testBase.setUp();
     }
 
@@ -87,9 +82,9 @@ public class SelectionPlaylistTest {
 
         // Step 3: Search and open the song - ensure it`s not added to Selection playlist
         testBase.getSongListPage().expectPlaylistToBeSelected(selectionPlaylist);
-        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(almCompSongID), "Song should not be visible on the playlist yet");
-        testBase.getSongListPage().searchSong(almCompSongID);
-        testBase.getSongListPage().openPreviewForSong(almCompSongID);
+        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(almSongID), "Song should not be visible on the playlist yet");
+        testBase.getSongListPage().searchSong(almSongID);
+        testBase.getSongListPage().openPreviewForSong(almSongID);
         testBase.getSongPreviewPage().goNext();
 
         // Step 4: Play the song and in above 80% of the song length - exit the game
@@ -105,8 +100,51 @@ public class SelectionPlaylistTest {
 
         // Step 6: A song that is more than 80% complete, should be added to the Selection playlist
         testBase.getSongListPage().goToPlaylist(selectionPlaylist);
-        Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(almCompSongID), "Song should be added to Selection playlist after above 80% complete");
-        testBase.getSongListPage().expectSongToBeMarkedAsPlayedToday(almCompSongID);
+        Assertions.assertTrue(testBase.getSongListPage().isSongOnTheList(almSongID), "Song should be added to Selection playlist after above 80% complete");
+        testBase.getSongListPage().expectSongToBeMarkedAsPlayedToday(almSongID);
+    }
+
+    @Test
+    public void uncompletedSongIsNotAddedToSelectionPlaylist() {
+
+        // Step 1: Select Advanced setup
+        testBase.getLandingPage().enterTheGame();
+        testBase.getInputSelectionPage().selectAdvancedSetup();
+        testBase.getAdvancedConnectionPage().goToMainMenu();
+
+        // Step 2: Ensure song language is selected
+        testBase.getMainMenuPage().goToManageSongs();
+        testBase.getManageSongsPage().goToSelectLanguages();
+        testBase.getSongLanguagesPage().ensureSongLanguageIsSelected(engLanguage);
+        testBase.getSongLanguagesPage().goBackToMainMenu();
+
+        // Step 3: Pick up the song in language playlist - ensure song is not visible in Selection playlist
+        testBase.getMainMenuPage().goToSongList();
+        testBase.getSongListPage().expectPlaylistToBeSelected(selectionPlaylist);
+        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(uncompSongID), "Song should not be visible on the playlist yet");
+        testBase.getSongListPage().goToPlaylist(englishPlaylist);
+        testBase.getSongListPage().openPreviewForSong(uncompSongID);
+
+        // Step 4: Toggle game mode to `Cooperation` and play the song
+        testBase.getSongPreviewPage().toggleGameMode();
+        testBase.getSongPreviewPage().toggleGameMode();
+        testBase.getSongPreviewPage().goNext();
+        testBase.getSongPreviewPage().goToPlayTheSong();
+
+        // Step 5: After reach the expected score - exit the game
+        testBase.getGamePage().waitForPlayersScoreToBeGreaterThan(100);
+        testBase.getGamePage().exitSong();
+
+        // Step 6: Skip to Song List
+        testBase.getPostGameResultsPage().skipScoresAnimation();
+        testBase.getPostGameResultsPage().goToHighScoresStep();
+        testBase.getPostGameHighScoresPage().goToSongListPage();
+
+        // Step 7: The song that is less than 80% complete, should not be added to the Selection playlist
+        testBase.getSongListPage().goToPlaylist(selectionPlaylist);
+        Assertions.assertFalse(testBase.getSongListPage().isSongOnTheList(uncompSongID), "Song with less than 80% complete should not be added to Selection playlist");
+        testBase.getSongListPage().goToPlaylist(englishPlaylist);
+        testBase.getSongListPage().expectSongToBeMarkedAsPlayedToday(uncompSongID);
     }
 
     @AfterEach
