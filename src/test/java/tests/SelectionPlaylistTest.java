@@ -147,9 +147,43 @@ public class SelectionPlaylistTest {
         testBase.getSongListPage().expectSongToBeMarkedAsPlayedToday(uncompSongID);
     }
 
+    @Test
+    public void changeSongPopularityIndicator() {
+
+        // Step 1: Select Advanced setup
+        testBase.getLandingPage().enterTheGame();
+        testBase.getInputSelectionPage().selectAdvancedSetup();
+        testBase.getAdvancedConnectionPage().goToMainMenu();
+
+        // Step 2: Ensure song language is selected
+        testBase.getMainMenuPage().goToSongList();
+        testBase.getSongLanguagesPage().ensureSongLanguageIsSelected(engLanguage);
+        testBase.getSongLanguagesPage().continueAndGoToSongList();
+
+        // Step 3: Pick up and play random popular song from Selection playlist
+        testBase.getSongListPage().goToPlaylist(selectionPlaylist);
+        testBase.getSongListPage().doesPlaylistContainSongsMarkedAsPopular();
+
+        String popSong = testBase.getSongListPage().getSelectedSongID();
+
+        testBase.getSongListPage().approveSongByKeyboard();
+        testBase.getSongPreviewPage().goNext();
+        testBase.getSongPreviewPage().goToPlayTheSong();
+        Assertions.assertTrue(testBase.getGamePage().lyricsContainerElement(0).isDisplayed(), "The song lyrics for player should be visible");
+        testBase.getGamePage().skipOutro();
+
+        // Step 4: Skip to the Song list
+        testBase.getPostGameResultsPage().skipScoresAnimation();
+        testBase.getPostGameResultsPage().goToHighScoresStep();
+        testBase.getPostGameHighScoresPage().goToSongListPage();
+
+        // Step 5: The song indicator should change from `popular` to `Played today`
+        testBase.getSongListPage().expectPlaylistToBeSelected(selectionPlaylist);
+        testBase.getSongListPage().expectSongToBeMarkedAsPlayedToday(popSong);
+    }
+
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
-
 }
