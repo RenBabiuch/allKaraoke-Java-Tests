@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.awaitility.Awaitility.await;
 
-
 import java.time.Duration;
 
 public class GamePage {
@@ -21,6 +20,10 @@ public class GamePage {
 
     @FindBy(css = "[data-test='button-restart-song']")
     private WebElement restartButton;
+
+    @FindBy(css = "[data-test='button-exit-song']")
+    private WebElement exitButton;
+
 
     public GamePage(WebDriver driver) {
         this.driver = driver;
@@ -75,7 +78,6 @@ public class GamePage {
         Assertions.assertEquals(expectedScoreValue, p1scoreNum);
     }
 
-
     public void goToPauseMenu() {
         actions.sendKeys(Keys.BACK_SPACE).perform();
     }
@@ -83,6 +85,11 @@ public class GamePage {
     public void restartSong() {
         goToPauseMenu();
         restartButton.click();
+    }
+
+    public void exitSong() {
+        goToPauseMenu();
+        exitButton.click();
     }
 
     public WebElement lyricsContainerElement(int playerNumber) {
@@ -96,11 +103,27 @@ public class GamePage {
         return lyricsContainerElement(playerNumber).isDisplayed();
     }
 
+    public void skipIntroIfPossible() {
+        By skipIntroSelector = By.cssSelector("[data-test='skip-intro-info']");
+
+        try {
+            WebElement skipIntroElem = wait.until(ExpectedConditions.visibilityOfElementLocated(skipIntroSelector));
+
+            if (skipIntroElem.isDisplayed()) {
+                actions.sendKeys(Keys.ENTER).perform();
+            }
+        } catch (NoSuchElementException | TimeoutException e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
+
     public void skipOutro() {
         By skipOutroSelector = By.cssSelector("[data-test='skip-outro-info']");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(500));
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(300));
         wait.until(ExpectedConditions.visibilityOfElementLocated(skipOutroSelector));
         actions.sendKeys(Keys.ENTER).perform();
     }
+
 }

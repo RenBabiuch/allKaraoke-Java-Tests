@@ -27,6 +27,10 @@ public class SongLanguagesPage {
         continueButton.click();
     }
 
+    public void goBackToMainMenu() {
+        continueButton.click();
+    }
+
     public WebElement getLanguageElement(String language) {
         return driver.findElement(By.cssSelector("[data-test=lang-" + language + "]"));
     }
