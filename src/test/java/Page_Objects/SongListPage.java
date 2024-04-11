@@ -116,7 +116,8 @@ public class SongListPage {
     public void expectPlaylistToBeSelected(String playlistName) {
         String playlistSelectedAttribute = playlistElement(playlistName).getAttribute("data-selected");
 
-        Assertions.assertEquals("true", playlistSelectedAttribute, "Expected playlist is not selected");
+        Assertions.assertEquals("true", playlistSelectedAttribute, "Expected playlist " + playlistName
+                + " to be selected, but it is not. data-selected=" + playlistSelectedAttribute + " instead");
     }
 
     public void approveSongByKeyboard() {
@@ -128,10 +129,9 @@ public class SongListPage {
     }
 
     public void expectSongToBeMarkedAsPlayedToday(String songID) {
-        String playedStatusText = getSongElement(songID).findElement(By.cssSelector("[data-test='song-stat-indicator']")).getText();
-        String playedStatusSubs = playedStatusText.substring(0, 1).toUpperCase() + playedStatusText.substring(1).toLowerCase();
+        String playedStatusText = getSongElement(songID).findElement(By.cssSelector("[data-test='song-stat-indicator']")).getText().toLowerCase();
 
-        Assertions.assertEquals("Played today", playedStatusSubs, "Played today status should be visible for the song");
+        Assertions.assertEquals("played today", playedStatusText, "The song: " + songID + " should have the status 'Played today'. Received song's indicator is: " + playedStatusText);
     }
 
     public boolean isSongMarkedAsNew(String songID) {
